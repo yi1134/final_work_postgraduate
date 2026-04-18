@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -65,9 +66,11 @@ public class DashboardServiceImpl implements DashboardService {
             latestRecords = checkpointRecordMapper.selectList(
                     new QueryWrapper<CheckpointRecord>()
                             .eq("task_id", currentTaskId)
-                            .orderByAsc("checkpoint_no")
-                            .last("limit 10")
+                            .orderByDesc("checkpoint_no")
+                            .last("limit 20")
             );
+
+            Collections.reverse(latestRecords);
         }
 
         // 3. 节点数据
