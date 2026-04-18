@@ -1,0 +1,80 @@
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: edge-control-system
+
+  profiles:
+    active: dev
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  session:
+    store-type: redis
+    timeout: 30m
+    redis:
+      namespace: edge-control-system:session
+
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.keybird.edge_control_system.model.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+logging:
+  level:
+    root: info
+    com.keybird.edge_control_system: debug
+    org.springframework.web: info
+
+knife4j:
+  enable: true
+  openapi:
+    title: 云边协同自适应容器服务卸载管理系统接口文档
+    description: edge_control_system API 文档
+    email: 2371440@stu.mail.neu.edu.cn
+    concat: Alan
+    url: http://localhost:8123/api
+    version: 1.0
+
+scheduler:
+  enabled: true
+  checkpoint-interval-ms: 10000
+  request-generate-min: 5
+  request-generate-max: 15
+  continuous-request-ratio: 0.4
+  default-cloud-node-id: 1
+
+edge:
+  agent:
+    connect-timeout-ms: 3000
+    read-timeout-ms: 5000
+    heartbeat-expire-seconds: 30
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+system:
+  init-admin:
+    username: admin
+    password: Fate6105
+    nickname: 超级管理员
