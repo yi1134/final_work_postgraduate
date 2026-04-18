@@ -45,8 +45,8 @@ knife4j:
   openapi:
     title: 云边协同自适应容器服务卸载管理系统接口文档
     description: edge_control_system API 文档
-    email: 2371440@stu.mail.neu.edu.cn
-    concat: Alan
+    email: keybird07@163.com
+    concat: Keybird
     url: http://localhost:8123/api
     version: 1.0
 
@@ -72,9 +72,3 @@ management:
   endpoint:
     health:
       show-details: always
-
-system:
-  init-admin:
-    username: admin
-    password: Fate6105
-    nickname: 超级管理员
